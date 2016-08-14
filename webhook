@@ -1,0 +1,48 @@
+import copy, json, datetime
+from django.utils import timezone
+from django.http import HttpResponse
+from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.http import require_POST
+
+
+
+class WebhookBase(View):
+
+    @method_decorator(csrf_exempt)
+    def dispatch(self, request, *args, **kwargs):
+        return super(WebhookBase, self).dispatch(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        data = json.loads(request.body)
+        meta = copy.copy(request.META)
+
+        for k, v in meta.items():
+            if not isinstance(v, basestring):
+                del meta[k]
+
+        try:
+            self.process_webhook(data, meta)
+        except Exception:
+            self.handle_exception()
+
+        return HttpResponse(status=200)
+
+    def process_webhook(self, data, meta):
+        raise NotImplementedError
+    
+    def handle_exception(self, data, meta):
+        raise NotImplementedError
+
+
+class WebhookView(WebhookBase):
+
+    def process_webhook(self, data, meta):
+        WebhookTransaction.objects.create(
+            datetime_event_generated=datetime.datetime.fromtimestamp(
+                data['timestamp']/1000.0,
+                tz=timezone.get_current_timezone()
+            ),
+            event_name=data['webhookEvent'],
+            body=data,
+            request_meta=meta
+        )
