@@ -1,5 +1,4 @@
-import copy, json, datetime
-from django.utils import timezone
+
 from django.http import HttpResponse
 from django.views.generic import View
 
@@ -32,18 +31,4 @@ class WebhookBase(View):
         raise NotImplementedError
     
     def handle_exception(self, data, meta):
-        raise NotImplementedError
-
-
-class WebhookView(WebhookBase):
-
-    def process_webhook(self, data, meta):
-        WebhookTransaction.objects.create(
-            datetime_event_generated=datetime.datetime.fromtimestamp(
-                data['timestamp']/1000.0,
-                tz=timezone.get_current_timezone()
-            ),
-            event_name=data['webhookEvent'],
-            body=data,
-            request_meta=meta
-        )
+        pass
