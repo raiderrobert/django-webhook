@@ -1,4 +1,6 @@
-import simplejson
+"""
+Testing mini-project and tests in one
+"""
 
 from django.conf import settings
 from django.test import TestCase
@@ -6,6 +8,7 @@ from django.test.client import Client
 
 from webhook import WebhookBase
 
+# Mini Project starts here
 
 DEBUG = True
 ROOT_URLCONF = 'tests'
@@ -22,6 +25,8 @@ class WebhookView(WebhookBase):
     def process_webhook(self, data, meta):
         pass
 
+
+# Tests start here
 
 class TestWebhook(TestCase):
 
