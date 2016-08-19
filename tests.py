@@ -15,15 +15,16 @@ ROOT_URLCONF = 'tests'
 DATABASES = {'default': {}}
 SECRET_KEY = "not so secret"
 
-urlpatterns = [
-    url(r'^webhook-receiver', WebhookView.as_view(), name='web_hook'),
-]
-
 
 class WebhookView(WebhookBase):
 
     def process_webhook(self, data, meta):
         pass
+
+
+urlpatterns = [
+    url(r'^webhook-receiver', WebhookView.as_view(), name='web_hook'),
+]
 
 
 # Tests start here
