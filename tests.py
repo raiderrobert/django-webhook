@@ -6,11 +6,13 @@ from django.test import TestCase
 from django.test.client import Client
 
 from django.conf.urls import url, include
+settings.configure()
+
 from webhook import WebhookBase
 
 # Mini Project starts here
 
-settings.configure()
+
 
 DEBUG = True
 ROOT_URLCONF = 'tests'
