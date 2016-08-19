@@ -23,7 +23,7 @@ class WebhookView(WebhookBase):
         pass
 
 
-class TestPipeline(TestCase):
+class TestWebhook(TestCase):
 
   def setUp(self):
       """initialize the Django test client"""
@@ -31,11 +31,9 @@ class TestPipeline(TestCase):
         
   def test_your_test(self):
       python_dict = {
-          "1": {
-              "guid": "8a40135230f21bdb0130f21c255c0007",
-              "portalId": 999,
-              "email": "fake@email"
-          }
+          "eventId": "5c0007",
+          "portalId": 999,
+          "userEmail": "fake@email.com"
       }
       response = self.c.post('/webhook-receiver/',
                                   json.dumps(python_dict),
