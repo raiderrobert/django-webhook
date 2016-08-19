@@ -2,10 +2,10 @@
 Testing mini-project and tests in one
 """
 
-from django.conf import settings
 from django.test import TestCase
 from django.test.client import Client
 
+from django.conf.urls import url, include
 from webhook import WebhookBase
 
 # Mini Project starts here
