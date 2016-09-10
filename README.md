@@ -1,6 +1,8 @@
 # django-webhook
 Make webhooks in Django very quickly and easily.
 
+[![Build Status](https://travis-ci.org/raiderrobert/django-webhook.svg?branch=master)](https://travis-ci.org/raiderrobert/django-webhook)
+
 ##  Basic Implementation
 
 The `WebhookBase` class is a simple implementation for consuming a webhook.
