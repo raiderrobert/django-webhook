@@ -8,7 +8,7 @@ The `WebhookBase` class is a simple implementation for consuming a webhook.
 Make an app 
 
     # my_app/views
-    
+    from webhook import WebhookBase
     from .models import YourModel
     
     
