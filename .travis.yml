@@ -15,7 +15,8 @@ python:
     - "3.5"
     - "nightly"
 
-script: python tests.py
+script:
+  coverage run --source=webhook tests.py
 
 install:
   - travis_retry pip install $DJANGO
