@@ -1,6 +1,7 @@
 """
 Testing mini-project and tests in one
 """
+
 from __future__ import unicode_literals
 import unittest
 
@@ -14,7 +15,7 @@ if __name__ == '__main__':
     settings.configure()
     unittest.main()
 
-from webhook import WebhookBase
+from webhook.base import WebhookBase
 
 # Mini Project starts here
 
