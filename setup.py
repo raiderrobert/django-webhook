@@ -20,7 +20,7 @@ setup(
     version=VERSION,
     author='Robert Roskam',
     author_email='me@robertroskam.com',
-    install_requires=['django',],
+    install_requires=['django>=1.8',],
     packages=find_packages(),
     include_package_data=True,  # declarations in MANIFEST.in
     license='MIT',
