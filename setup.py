@@ -30,7 +30,7 @@ setup(
     long_description=read_file('README.md'),
     keywords=['webhooks', 'HTTP callbacks', 'web API'],
     classifiers=[
-        'Development Status :: 4 - Beta',
+        'Framework :: Django',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
         'Operating System :: Unix',
