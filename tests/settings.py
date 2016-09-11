@@ -6,9 +6,6 @@ from __future__ import unicode_literals
 import unittest
 
 from django.conf import settings
-from django.test import TestCase
-from django.test.client import Client
-
 from django.conf.urls import url, include
 
 if __name__ == '__main__':
