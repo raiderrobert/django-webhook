@@ -20,7 +20,7 @@ class WebhookBase(View):
         data = json.loads(request.body.decode('utf-8'))
         meta = copy.copy(request.META)
 
-        for k, v in meta.items():
+        for k, v in list(meta.items()):
             if not isinstance(v, str):
                 del meta[k]
 
