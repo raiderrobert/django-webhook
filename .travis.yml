@@ -16,7 +16,7 @@ python:
     - "nightly"
 
 script:
-  coverage run --source=webhook runtests.py
+  coverage run --source=webhook runtests.py -v 2
 
 install:
   - travis_retry pip install $DJANGO
