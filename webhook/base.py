@@ -2,6 +2,7 @@
 Base webhook implementation
 """
 import json
+import copy
 
 from django.http import HttpResponse
 from django.views.generic import View
