@@ -18,7 +18,7 @@ class WebhookBase(View):
 
     def post(self, request, *args, **kwargs):
         reader = codecs.getreader("utf-8")
-        data = json.loads(reader(request.body))
+        data = json.load(reader(request.body))
         meta = copy.copy(request.META)
 
         for k, v in meta.items():
