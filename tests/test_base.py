@@ -20,4 +20,4 @@ class TestWebhook(TestCase):
         response = self.c.post('/webhook-receiver/',
                                 json.dumps(python_dict),
                                 content_type="application/json")
-        self.assertEqual(self.response.status_code, 200)
+        self.assertEqual(response.status_code, 200)
