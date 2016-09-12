@@ -6,6 +6,7 @@ cache: pip
 
 env:
   - DJANGO='https://github.com/django/django/archive/master.tar.gz'
+  - DJANGO='django>=1.10.0,<1.11.0'
   - DJANGO='django>=1.9.0,<1.10.0'
   - DJANGO='django>=1.8.0,<1.9.0'
 
@@ -16,7 +17,7 @@ python:
     - "nightly"
 
 script:
-  coverage run --source=webhook runtests.py -v 2
+  coverage run --source=webhook runtests.py
 
 install:
   - travis_retry pip install $DJANGO
