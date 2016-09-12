@@ -1,8 +1,7 @@
 """
 Base webhook implementation
 """
-import json
-import copy
+import json, copy, codecs
 
 from django.http import HttpResponse
 from django.views.generic import View
@@ -18,7 +17,8 @@ class WebhookBase(View):
         return super(WebhookBase, self).dispatch(request, *args, **kwargs)
 
     def post(self, request, *args, **kwargs):
-        data = json.loads(request.body)
+        reader = codecs.getreader("utf-8")
+        data = json.loads(reader(request.body))
         meta = copy.copy(request.META)
 
         for k, v in meta.items():
