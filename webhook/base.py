@@ -17,7 +17,7 @@ class WebhookBase(View):
         return super(WebhookBase, self).dispatch(request, *args, **kwargs)
 
     def post(self, request, *args, **kwargs):
-        data = json.loads(request.body)
+        data = json.loads(str(request.body))
         meta = copy.copy(request.META)
 
         for k, v in meta.items():
