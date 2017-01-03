@@ -6,14 +6,16 @@ import json
 from django.test import TestCase
 from django.test.client import Client
 
+from webhook.base import WebhookBase
 
-class TestWebhook(TestCase):
+
+class TestIntegration(TestCase):
 
     def setUp(self):
         """initialize the Django test client"""
         self.c = Client()
             
-    def test_your_test(self):
+    def test_success(self):
         python_dict = {
             "eventId": "5c0007",
             "portalId": 999,
@@ -24,3 +26,12 @@ class TestWebhook(TestCase):
                                 json.dumps(python_dict),
                                 content_type="application/json")
         self.assertEqual(response.status_code, 200)
+
+
+class TestWebhookBase(TestCase):
+    
+    def test_unimplemented_process_webhook(self):
+        self.assertRaises(NotImplementedError, WebhookBase().process_webhook(data={}, meta={})
+     
+    def test_unimplemented_handle_exception(self):
+         WebhookBase().handle_exception(data={}, meta={})  # this should succeed
