@@ -32,6 +32,6 @@ class TestWebhookBase(TestCase):
     
     def test_unimplemented_process_webhook(self):
         self.assertRaises(NotImplementedError, WebhookBase().process_webhook(data={}, meta={})
-     
+
     def test_unimplemented_handle_exception(self):
          WebhookBase().handle_exception(data={}, meta={})  # this should succeed
