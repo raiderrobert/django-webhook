@@ -11,6 +11,9 @@ from django.views.decorators.csrf import csrf_exempt
 
 
 class WebhookBase(View):
+    """
+    Simple Webhook base class to handle the most standard case.
+    """
 
     @method_decorator(csrf_exempt)
     def dispatch(self, request, *args, **kwargs):
@@ -18,21 +21,8 @@ class WebhookBase(View):
 
     def post(self, request, *args, **kwargs):
         data = json.loads(request.body.decode('utf-8'))
-        meta = copy.copy(request.META)
-
-        for k, v in list(meta.items()):
-            if not isinstance(v, str):
-                del meta[k]
-
-        try:
-            self.process_webhook(data, meta)
-        except Exception:
-            self.handle_exception()
-
+        self.process_webhook(data)
         return HttpResponse(status=200)
 
     def process_webhook(self, data, meta):
         raise NotImplementedError
-    
-    def handle_exception(self, data, meta):
-        pass
