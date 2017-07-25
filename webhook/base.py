@@ -24,5 +24,5 @@ class WebhookBase(View):
         self.process_webhook(data)
         return HttpResponse(status=200)
 
-    def process_webhook(self, data, meta):
+    def process_webhook(self, data):
         raise NotImplementedError
