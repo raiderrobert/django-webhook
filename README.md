@@ -8,6 +8,25 @@ Make webhooks in Django very quickly and easily.
 
 The `WebhookBase` class is a simple implementation for consuming a webhook.
 
+Given a model
+
+    # my_app/models
+    from .models import YourModel
+    
+    
+    class YourModel(models.Model):
+        event_name = models.CharField(max_length=255)
+        body = models.TextField()
+    
+
+And given a JSON payload
+
+    {
+        'webhookEvent':'boom',
+        'numThing': 1,
+        'charThing': 'foo'
+    }
+
 Make an app 
 
     # my_app/views
@@ -17,11 +36,10 @@ Make an app
     
     class WebhookView(WebhookBase):
     
-        def process_webhook(self, data, meta):
+        def process_webhook(self, data):
             YourModel.objects.create(
                 event_name=data['webhookEvent'],
-                body=data,
-                request_meta=meta
+                body=data
             )
 
 
