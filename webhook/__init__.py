@@ -1,4 +1,4 @@
 """
-Notification classes. Used for sending texts and emails
+Version of Webhook App Base
 """
 __version__ = '0.0.1'
