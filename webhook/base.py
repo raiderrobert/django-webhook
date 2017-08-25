@@ -24,7 +24,7 @@ class WebhookBase(View):
         self.process_webhook(data)
         return HttpResponse(status=200)
 
-    def process_webhook(self, data=None):
+    def process_webhook(self, data):
         """
         Unimplemented method
         """
