@@ -4,7 +4,7 @@ from webhook.base import WebhookBase
 
 class WebhookView(WebhookBase):
 
-    def process_webhook(self, data, meta):
+    def process_webhook(self, data):
         pass
 
 
